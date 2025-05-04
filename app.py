@@ -827,7 +827,7 @@ def ai_pm_buddy_assistant():
     try:
         # Get the API key from Streamlit secrets
         if 'openai_api_key' in st.secrets:
-            api_key = st.secrets['openai_api_key']
+            api_key = st.secrets['OPENAI_API_KEY']
         else:
             st.error("OpenAI API key not found in secrets. Please add it to your Streamlit Cloud secrets.")
             return
