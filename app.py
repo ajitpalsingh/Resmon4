@@ -825,9 +825,13 @@ def ai_pm_buddy_assistant():
     
     # Initialize OpenAI client using Streamlit secrets
     try:
-        # Get the API key from Streamlit secrets
-        if 'openai_api_key' in st.secrets:
+        # Get the API key from Streamlit secrets - check both uppercase and lowercase variants
+        if 'OPENAI_API_KEY' in st.secrets:
             api_key = st.secrets['OPENAI_API_KEY']
+            st.success("Found OpenAI API key in secrets (uppercase version)!")
+        elif 'openai_api_key' in st.secrets:
+            api_key = st.secrets['openai_api_key']
+            st.success("Found OpenAI API key in secrets (lowercase version)!")
         else:
             st.error("OpenAI API key not found in secrets. Please add it to your Streamlit Cloud secrets.")
             return
